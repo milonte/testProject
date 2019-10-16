@@ -3,11 +3,16 @@
 namespace App\Controller;
 
 use App\Entity\Property;
+use League\Csv\Writer;
 use App\Form\PropertyType;
 use App\Repository\PropertyRepository;
+use SplFileObject;
+use SplTempFileObject;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
 class PropertyController extends AbstractController
@@ -77,5 +82,43 @@ class PropertyController extends AbstractController
         }
 
         return $this->redirectToRoute('property_index');
+    }
+
+    /**
+     * @Route("/export", name="property_export", methods={"GET"})
+     */
+    public function export(): Response
+    {
+        
+        $response = new StreamedResponse();
+
+        $response->setCallback(function() {
+            $entityManager = $this->getDoctrine()->getManager();
+            $properties = $entityManager->getRepository(Property::class)
+            ->findAll();
+
+            $handle = fopen('php://output', 'w+');
+
+            fputcsv($handle, ['Adresse', 'Surface', 'Chambres', 'Type'], ';');
+        
+            foreach ($properties as $property) {
+
+                fputcsv($handle, [
+                    $property->getAdress(),
+                    $property->getSurface(),
+                    $property->getRooms(),
+                    $property->getType()->getType()],
+                    ';'
+                );
+            }
+
+            fclose($handle);
+        });
+        
+        $response->setStatusCode(200);
+        $response->headers->set('Content-Type', 'text/csv; charset=utf-8');
+        $response->headers->set('Content-Disposition','attachment; filename="liste_biens.csv"');
+    
+        return $response;
     }
 }
