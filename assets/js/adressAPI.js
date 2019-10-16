@@ -21,7 +21,6 @@ adressElt.addEventListener('input', () => {
         datalistElt.innerHTML = '';
         
         data['features'].forEach(result => {
-            console.dir(datalistElt);
             resultElt = document.createElement("option");
             resultElt.value = result.properties.label;
             datalistElt.appendChild(resultElt);
