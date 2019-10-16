@@ -2,6 +2,11 @@
 
 {% block title %}Edition Bien{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('property') }}
+{% endblock %}
+
 {% block body %}
     <div class="container">
         <h1 class="text-center">Edition Bien</h1>
@@ -9,4 +14,10 @@
 
         {{ include('property/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('property') }}
+    {{ encore_entry_script_tags('adressAPI') }}
 {% endblock %}
