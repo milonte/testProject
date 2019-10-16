@@ -4,7 +4,8 @@
             {{ form_label(form.adress) }}
         </div>
         <div class="col-md-8 col-xs-12">
-            {{ form_widget(form.adress, {'attr': {'class': 'form-control'}} ) }}
+            {{ form_widget(form.adress, {'attr': {'class': 'form-control', 'list' : 'adress_results'}} ) }}
+            <datalist id="adress_results"></datalist>
         </div>
         {{ form_errors(form.adress) }}
     </div>
