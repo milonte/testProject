@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cbe8bb64b212c46c2de071f2e9d1c3d8",
+    "content-hash": "06f3156e50e55f55a2031db6673e7fc2",
     "packages": [
         {
             "name": "composer/xdebug-handler",
@@ -5993,6 +5993,47 @@
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
             "time": "2019-09-11T15:41:19+00:00"
+        },
+        {
+            "name": "thomaspark/bootswatch",
+            "version": "v4.3.1",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:thomaspark/bootswatch.git",
+                "reference": "f42e9299c01cb800d99f6664e20363dc1859c6b9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thomaspark/bootswatch/zipball/f42e9299c01cb800d99f6664e20363dc1859c6b9",
+                "reference": "f42e9299c01cb800d99f6664e20363dc1859c6b9",
+                "shasum": ""
+            },
+            "suggest": {
+                "robloach/component-installer": "Allows installation of Components via Composer"
+            },
+            "type": "component",
+            "extra": {
+                "component": {
+                    "name": "bootswatch",
+                    "files": [
+                        "README.md",
+                        "LICENSE",
+                        "dist/**/*"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "thomaspark",
+                    "email": "thomas@bootswatch.com"
+                }
+            ],
+            "description": "Themes for Bootstrap",
+            "time": "2019-02-14T00:05:44+00:00"
         },
         {
             "name": "twig/twig",

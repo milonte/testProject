@@ -8,37 +8,41 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Property index</h1>
+    <div class="container">
+        <h1 class="text-center">Liste des biens</h1>
 
-    <a href="{{ path('property_new')}}" class="btn btn-primary"><i class="fas fa-plus"></i>Nouveau bien</a>
+        <a href="{{ path('property_new')}}" class="btn btn-primary"><i class="fas fa-plus"></i> Nouveau bien</a>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Surface</th>
-                <th>Rooms</th>
-                <th>Adress</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for property in properties %}
-            <tr>
-                <td>{{ property.surface }}</td>
-                <td>{{ property.rooms }}</td>
-                <td>{{ property.adress }}</td>
-                <td>
-                    <a class="btn btn-link" href="{{ path('property_edit', {'id': property.id}) }}"><i class="fas fa-edit"></i> Modifier</a>
-                    {{ include('property/_delete_form.html.twig') }}
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <table class="table table-striped mt-3">
+            <thead>
+                <tr>
+                    <th class="col-5 text-center">Adresse</th>
+                    <th class="col-2 text-center">Surface</th>
+                    <th class="col-2 text-center">Chambres</th>
+                    <th class="col-3 text-center"></th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for property in properties %}
+                <tr>
+                    <td class="col-5 text-center">{{ property.adress }}</td>
+                    <td class="col-2 text-center">{{ property.surface }}</td>
+                    <td class="col-2 text-center">{{ property.rooms }}</td>
+                    <td class="col-3 text-center">
+                        <div class="row no-gutters">
+                            <a class="btn btn-link" href="{{ path('property_edit', {'id': property.id}) }}"><i class="fas fa-edit"></i> Modifier</a>
+                            {{ include('property/_delete_form.html.twig') }}
+                        </div>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
 {% endblock %}
 

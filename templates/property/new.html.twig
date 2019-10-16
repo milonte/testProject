@@ -2,10 +2,23 @@
 
 {% block title %}New Property{% endblock %}
 
-{% block body %}
-    <h1>Nouveau bien</h1>
-    <a href="{{ path('property_index') }}">Retour à la liste des biens</a>
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('property') }}
+{% endblock %}
 
-    {{ include('property/_form.html.twig') }}
+{% block body %}
+    <div class="container">
+        <h1 class="text-center">Nouveau bien</h1>
+        <a href="{{ path('property_index') }}">Retour à la liste des biens</a>
+
+        {{ include('property/_form.html.twig') }}
+    </div>
 
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('property') }}
+{% endblock %}
+

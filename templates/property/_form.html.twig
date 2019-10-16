@@ -1,4 +1,42 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Ajouter') }}</button>
+    <div class="row no-gutters justify-content-center mt-3">
+        <div class="col-md-2 col-xs-12">
+            {{ form_label(form.adress) }}
+        </div>
+        <div class="col-md-8 col-xs-12">
+            {{ form_widget(form.adress, {'attr': {'class': 'form-control'}} ) }}
+        </div>
+        {{ form_errors(form.adress) }}
+    </div>
+    <div class="row no-gutters justify-content-center mt-3">
+        <div class="col-md-2 col-xs-12">
+            {{ form_label(form.rooms) }}
+        </div>
+        <div class="col-md-8 col-xs-12">
+            {{ form_widget(form.rooms, {'attr': {'class': 'form-control'}} ) }}
+        </div>
+        {{ form_errors(form.rooms) }}
+    </div>
+    <div class="row no-gutters justify-content-center mt-3">
+        <div class="col-md-2 col-xs-12">
+            {{ form_label(form.surface) }}
+        </div>
+        <div class="col-md-8 col-xs-12">
+            {{ form_widget(form.surface, {'attr': {'class': 'form-control'}} ) }}
+        </div>
+        {{ form_errors(form.surface) }}
+    </div>
+    <div class="row no-gutters justify-content-center mt-3">
+        <div class="col-md-2 col-xs-12">
+            {{ form_label(form.type) }}
+        </div>
+        <div class="col-md-8 col-xs-12">
+            {{ form_widget(form.type, {'attr': {'class': 'form-control'}} ) }}
+        </div>
+        {{ form_errors(form.type) }}
+    </div>
+
+    <div class="row no-gutters justify-content-center mt-3">
+        <button class="btn btn-primary"><i class="fas fa-plus"></i> {{ button_label|default('Ajouter') }}</button>
+    </div>
 {{ form_end(form) }}
